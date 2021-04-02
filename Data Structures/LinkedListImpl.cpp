@@ -36,7 +36,7 @@ int main(){
 	third->data = 3;
 	third->next = NULL;
 
-	printLinkedList(first);
+	printLinkedList(second);
 
 	return 0;
 }
