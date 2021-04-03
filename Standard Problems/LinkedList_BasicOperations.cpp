@@ -64,6 +64,35 @@ void addEndOfList(Node** head, int end_node_data){
 	return;
 }
 
+// deletion of node from linkedlist
+void deleteOfNode(Node** head, int delete_key_position){
+	Node* temp = *head;
+
+
+	if(*head == NULL){
+		cout<<"No Node available in the linkedlist"<<endl;
+		return;
+	}
+
+	if(delete_key_position == 0){
+		*head = temp->next;
+		delete temp;
+		return;
+	}
+
+	int i=0;
+	while(temp != NULL && i< delete_key_position -1){ // finding the previous node.
+		temp = temp->next;
+		i++;
+	}
+
+	Node *next = temp->next->next; // Store pointer to the next of node to be deleted
+
+	delete temp->next;
+	
+	temp->next = next;
+}
+
 int main(){
 
 	Node* first = NULL;
@@ -104,5 +133,10 @@ int main(){
 	addEndOfList(&first,end_node_data);
 	printList(first);
 
+// deleting a node
+	cout<<"Delete Node by position"<<endl;
+	int delete_key_position = 2;
+	deleteOfNode(&first, delete_key_position);
+	printList(first);
 	return 0;
 }
